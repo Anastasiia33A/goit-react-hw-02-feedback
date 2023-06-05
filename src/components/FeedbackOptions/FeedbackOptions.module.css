@@ -1,0 +1,15 @@
+.list {
+display: inline;
+justify-content: center;
+
+}
+.button {
+margin: 15px;
+padding: 20px;
+font-weight: 600;
+font-size: 20px;
+background-color: rgb(255 215 0)
+}
+.button:hover, .button:focus {
+    background-color: aquamarine;
+}

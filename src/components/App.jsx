@@ -11,12 +11,18 @@ export class App extends Component {
     bad: 0
   };
 
-  addFeedback = option => {
-    this.setState(this.state({ [option]: this.state[option] + 1 }));
-  };
+  onLeaveFeedback = event => {
+    const feedbackToUpdate = event.target.textContent;
+
+    this.setState(prevState => ({
+      [feedbackToUpdate]: (prevState[feedbackToUpdate] += 1)
+    }));
+    };
 
   countTotalFeedback = () => {
-    return Object.keys(this.state).reduce((acc, option) => acc + option, 0);
+    const total = Object.keys(this.state).reduce((acc, option) => acc + this.state[option], 0);
+
+    return total;
   };
 
   countPositiveFeedbackPercentage = () => {
@@ -29,15 +35,22 @@ export class App extends Component {
     const { good, neutral, bad } = this.state;
     return (
       <div>
-        <Section><FeedbackOptions options={Object.keys(this.state)} onLeaveFeedback={this.addFeedback}></FeedbackOptions></Section>
+        <Section title="Please leave feedback">
+          <FeedbackOptions options={this.state} onLeaveFeedback={this.onLeaveFeedback} /></Section>
         <Section title="Statistics">
           {this.countTotalFeedback() ? (
-            <Statistics good={good} neutral={neutral} bad={bad} total={this.countTotalFeedback()} positiveFeedback={this.countPositiveFeedbackPercentage()}></Statistics>
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positiveFeedback={this.countPositiveFeedbackPercentage()}
+            ></Statistics>
           ) : (
-            <Notification message="There is no feedback" />
+            <Notification message="There is no feedback!" />
           )}
         </Section>
       </div>
     );
   }
-};
+}

@@ -1,25 +1,25 @@
 import PropTypes from 'prop-types';
-import css from './statistics.module.css'
+import css from './statistics.module.css';
 
-function Statistics({ good, neutral, bad, total, positiveFeedback }) {
+const Statistics = ({ good, neutral, bad, total, positiveFeedback }) => {
   
     return (
         <div>
-            <ul>
-                <li>
-                    <p className={css.good}>Good: {good}</p>
+            <ul className={css.item}>
+                <li >
+                    <p className={css.btnName}> Good: {good}</p>
                 </li>
-                <li>
-                    <p>Neutral: {neutral}</p>
+                <li >
+                    <p className={css.btnName}>Neutral: {neutral}</p>
                 </li>
-                <li>
-                    <p>Bad: {bad}</p>
+                <li >
+                    <p className={css.btnName}>Bad: {bad}</p>
                 </li>
-                <li>
-                    <p>Total: {total}</p>
+                <li >
+                    <p className={css.btnName}>Total: {total}</p>
                 </li>
-                <li>
-                    <p>Positive feedback: {positiveFeedback}</p>
+                <li className={css.list}>
+                    <p className={css.btnName}>Positive feedback: {positiveFeedback} %</p>
                 </li>
             </ul>
         </div>

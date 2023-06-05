@@ -1,0 +1,12 @@
+li,
+ul,
+p {
+    list-style: none;
+}
+.btnName {
+    font-weight: 700;
+    font-size: 20px;
+}
+.list {
+    color: rgb( 0 100 0);
+}
